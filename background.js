@@ -3,7 +3,7 @@ const GIT_CONTAINER_NAME = "Git";
 const GIT_CONTAINER_COLOR = "purple";
 const GIT_CONTAINER_ICON = "briefcase";
 
-let GITHUB_DOMAINS = ["github.com", "github.io", "githubapp.com", "githubusercontent.com", "choosealicense.com"];
+let GITHUB_DOMAINS = ["github.com", "github.io", "githubapp.com", "githubusercontent.com", "choosealicense.com", "github.dev"];
 
 let GITLAB_DOMAINS = ["gitlab.com", "gitlab-static.net"];
 
