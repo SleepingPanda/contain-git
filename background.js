@@ -333,6 +333,28 @@ async function containGit (options) {
   return {cancel: true};
 }
 
+async function openInContainer (tab, url, container) {
+  // check if there's already a tab with the same URL and container
+  // if so, focus that tab instead of opening a new one
+  const query = {
+    url: url,
+    cookieStoreId: container.cookieStoreId
+  };
+  const existingTabs = await browser.tabs.query(query);
+  if (existingTabs.length > 0) {
+    // there's already a tab with the same URL and container, so focus it
+    browser.tabs.update(existingTabs[0].id, {active: true});
+    return;
+  }
+
+  // no existing tab was found, so open a new one
+  browser.tabs.create({
+    url: url,
+    cookieStoreId: container.cookieStoreId,
+    active: true
+  });
+}
+
 (async function init() {
   await setupMACAddonManagementListeners();
   macAddonEnabled = await isMACAddonEnabled();
